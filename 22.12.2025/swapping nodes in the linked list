@@ -1,0 +1,87 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode swapNodes(ListNode head, int k) {
+
+    
+        int size = 0;
+        ListNode curr = head;
+
+        while (curr != null) {
+            curr = curr.next;
+            size++;
+        }
+
+        
+        curr = head;
+        int i = 1;
+        ListNode fromstart = null;
+
+        while (i <= k) {
+            if (i == k) fromstart = curr;
+            curr = curr.next;
+            i++;
+        }
+
+        
+        curr = head;
+        int j = 1;
+        ListNode fromlast = null;
+
+        while (j <= size - k + 1) {
+            if (j == size - k + 1) fromlast = curr;
+            curr = curr.next;
+            j++;
+        }
+
+        // swap values
+        int temp = fromstart.val;
+        fromstart.val = fromlast.val;
+        fromlast.val = temp;
+
+        return head;
+    }
+}
+
+/*
+
+JUST FOR PRACTICING WHAT I HAVE DONE
+
+1. # ****$$heading$$****
+for finding the k th node from starting 
+
+int fromfirst = null;
+while( i< = k){
+    if( i == k ){
+        fromfist= curr;
+    }
+    curr= curr.next;
+    i++;
+}
+
+int fromlast = null;
+while( i< size- k +1 ){
+    if ( i== size - k+ 1){
+        fromlast = curr; 
+    }
+    curr= curr.next;
+    j++;
+}
+
+// now swap the values 
+
+int temp = fromfirst.val;
+fromfirst.val = fromlast.val;
+fromlast.val = temp;
+*/
+
+
+
