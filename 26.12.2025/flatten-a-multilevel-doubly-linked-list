@@ -1,0 +1,42 @@
+
+class Solution {
+    public Node flatten(Node head) {
+        if (head == null) return null;
+        dfs(head);
+        return head;
+    }
+
+    private Node dfs(Node cur) {
+
+        Node last = cur;
+
+        while (cur != null) {
+
+            Node nextNode = cur.next;  // store next
+
+            if (cur.child != null) {
+
+                Node childHead = cur.child;
+                Node childTail = dfs(childHead); // fully flatten child list
+
+                // insert child between cur and nextNode
+                cur.next = childHead;
+                childHead.prev = cur;
+
+                childTail.next = nextNode;
+                if (nextNode != null) nextNode.prev = childTail;
+
+                cur.child = null; // remove child link
+
+                last = childTail;
+
+            } else {
+                last = cur;
+            }
+
+            cur = nextNode; // move to original next
+        }
+
+        return last; // return tail
+    }
+}
