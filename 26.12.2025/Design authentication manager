@@ -1,0 +1,68 @@
+class Token {
+    String tokenId;
+    int expirationTime;
+
+    public Token(String tokenId, int expirationTime) {
+        this.tokenId = tokenId;
+        this.expirationTime = expirationTime;
+    }
+}
+
+class AuthenticationManager {
+
+    LinkedList<Token> tokens;
+    Map<String, Token> tokenMap;
+    int count;
+    int timeToLive;
+
+    public AuthenticationManager(int timeToLive) {
+        this.tokens = new LinkedList<>();
+        this.tokenMap = new HashMap<>();
+        this.count = 0;
+        this.timeToLive = timeToLive;
+    }
+
+    public void generate(String tokenId, int currentTime) {
+        evict(currentTime);
+        Token token = new Token(tokenId, currentTime + timeToLive);
+        tokens.add(token);
+        tokenMap.put(tokenId, token);
+        count++;
+    }
+
+    public void renew(String tokenId, int currentTime) {
+        evict(currentTime);
+        Token token = tokenMap.get(tokenId);
+        if (token == null || token.expirationTime <= currentTime) {
+            return;
+        }
+        tokens.remove(token);
+        token.expirationTime = currentTime + timeToLive;
+        tokens.add(token);
+        tokenMap.put(tokenId, token);
+    }
+
+    public int countUnexpiredTokens(int currentTime) {
+        evict(currentTime);
+        return count;
+    }
+
+    private void evict(int currentTime) {
+        Token head = tokens.peekFirst();
+
+        while (head != null && head.expirationTime <= currentTime) {
+            tokens.removeFirst();
+            tokenMap.remove(head.tokenId);
+            count--;
+            head = tokens.peekFirst();
+        }
+    }
+}
+
+/**
+ * Your AuthenticationManager object will be instantiated and called as such:
+ * AuthenticationManager obj = new AuthenticationManager(timeToLive);
+ * obj.generate(tokenId,currentTime);
+ * obj.renew(tokenId,currentTime);
+ * int param_3 = obj.countUnexpiredTokens(currentTime);
+ */
