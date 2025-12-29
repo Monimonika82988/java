@@ -1,0 +1,64 @@
+class Solution {
+    // class of doubly linked list node 
+    class Node {
+        int val;
+        Node prev, next;
+        Node(int val) {
+            this.val = val;
+        }
+    }
+    
+    public int minimumPairRemoval(int[] nums) {
+        // edge case
+        if (nums.length == 1) return 0;
+
+        // dummy head - known pointer to list start 
+        var HEAD = new Node(Integer.MAX_VALUE);
+        // wrap `nums` into our custom linked list
+        var prev = HEAD;
+        for (int num : nums) {
+            var curr = new Node(num);
+            prev.next = curr;
+            curr.prev = prev;
+            prev = curr;
+        }
+
+        int result = 0;
+        // while the list contains at least 2 nodes..
+        while (HEAD.next.next != null) {
+            // init minSum using first 2 nodes
+            int minSum = HEAD.next.val + HEAD.next.next.val;
+            // refers to the first node in the pair with min sum
+            var minSumNode = HEAD.next;
+
+            // a flag indicating if list is not sorted = removal is needed
+            var removalIsNeeded = HEAD.next.val > HEAD.next.next.val;
+            var curr = HEAD.next.next;
+            while (curr.next != null) {
+                if (curr.val > curr.next.val) removalIsNeeded = true;
+                
+                // minimize minSum & refer to it using minSumNode
+                if (curr.val + curr.next.val < minSum) {
+                    minSum = curr.val + curr.next.val;
+                    minSumNode = curr;
+                }
+
+                curr = curr.next;
+            }
+
+            if (!removalIsNeeded) break;
+
+            // if list is not sorted..
+            // 1. the pair with min sum is collapsed to the next node
+            // add minSumNode val to the next node's val
+            minSumNode.next.val += minSumNode.val;
+            // remove minSumNode
+            minSumNode.next.prev = minSumNode.prev;
+            minSumNode.prev.next = minSumNode.next;
+            // 2. increment result counter
+            result++;
+        }
+
+        return result;
+    }
+}
