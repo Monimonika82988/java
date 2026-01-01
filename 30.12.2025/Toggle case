@@ -1,0 +1,14 @@
+import java.util.*;
+class ToggleCase {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        StringBuilder b=new StringBuilder();
+        for(char c:s.toCharArray()){
+            if(Character.isUpperCase(c)) b.append(Character.toLowerCase(c));
+            else if(Character.isLowerCase(c)) b.append(Character.toUpperCase(c));
+            else b.append(c);
+        }
+        System.out.println(b.toString());
+    }
+}
