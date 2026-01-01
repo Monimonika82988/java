@@ -1,0 +1,21 @@
+import java.util.*;
+class Employee{
+    String name; int id;
+    void setData(String n,int i){name=n; id=i;}
+    void display(){System.out.println(name+" "+id);}
+}
+class Manager extends Employee{
+    double bonus;
+    void setBonus(double b){bonus=b;}
+    void displayBonus(){System.out.println(bonus);}
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Manager m=new Manager();
+        m.setData(sc.nextLine(),sc.nextInt());
+        m.setBonus(sc.nextDouble());
+        m.display();
+        m.displayBonus();
+    }
+}
