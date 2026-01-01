@@ -1,0 +1,21 @@
+import java.util.*;
+class Animal{
+    String color;
+    void setColor(String c){color=c;}
+    void displayColor(){System.out.print(color+" ");}
+}
+class Dog extends Animal{
+    void sound(){System.out.println("Woof");}
+}
+class Cat extends Animal{
+    void sound(){System.out.println("Meow");}
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Dog d=new Dog(); Cat c=new Cat();
+        d.setColor(sc.nextLine()); c.setColor(sc.nextLine());
+        d.displayColor(); d.sound();
+        c.displayColor(); c.sound();
+    }
+}
