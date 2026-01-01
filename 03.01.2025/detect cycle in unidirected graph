@@ -1,0 +1,30 @@
+import java.util.*;
+class Graph{
+int v;
+ArrayList<Integer> adj[];
+Graph(int v){
+this.v=v;
+adj=new ArrayList[v];
+for(int i=0;i<v;i++)adj[i]=new ArrayList<>();
+}
+void add(int u,int w){
+adj[u].add(w);
+adj[w].add(u);
+}
+boolean dfs(int v,int p,boolean[] vis){
+vis[v]=true;
+for(int i:adj[v]){
+if(!vis[i]){
+if(dfs(i,v,vis))return true;
+}else if(i!=p)return true;
+}
+return false;
+}
+public static void main(String[] a){
+Scanner s=new Scanner(System.in);
+int n=s.nextInt(),e=s.nextInt();
+Graph g=new Graph(n);
+for(int i=0;i<e;i++)g.add(s.nextInt(),s.nextInt());
+boolean vis[]=new boolean[n];
+System.out.println(g.dfs(0,-1,vis));
+}}
