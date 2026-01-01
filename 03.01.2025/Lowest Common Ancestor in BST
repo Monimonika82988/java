@@ -1,0 +1,23 @@
+import java.util.*;
+class Node{int data;Node left,right;Node(int d){data=d;}}
+class Tree{
+Node root;
+Node insert(Node n,int d){
+if(n==null)return new Node(d);
+if(d<n.data)n.left=insert(n.left,d);
+else n.right=insert(n.right,d);
+return n;
+}
+Node lca(Node n,int a,int b){
+if(n==null)return null;
+if(a<n.data&&b<n.data)return lca(n.left,a,b);
+if(a>n.data&&b>n.data)return lca(n.right,a,b);
+return n;
+}
+public static void main(String[] x){
+Scanner s=new Scanner(System.in);
+Tree t=new Tree();
+int n=s.nextInt();
+for(int i=0;i<n;i++)t.root=t.insert(t.root,s.nextInt());
+System.out.println(t.lca(t.root,s.nextInt(),s.nextInt()).data);
+}}
