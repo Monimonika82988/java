@@ -1,0 +1,22 @@
+import java.util.*;
+class Shape{
+    void area(){System.out.println(0);}
+}
+class Rectangle extends Shape{
+    int l,w;
+    Rectangle(int l,int w){this.l=l; this.w=w;}
+    void area(){System.out.println(l*w);}
+}
+class Circle extends Shape{
+    double r;
+    Circle(double r){this.r=r;}
+    void area(){System.out.println(3.14*r*r);}
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Shape s1=new Rectangle(sc.nextInt(),sc.nextInt());
+        Shape s2=new Circle(sc.nextDouble());
+        s1.area(); s2.area();
+    }
+}
