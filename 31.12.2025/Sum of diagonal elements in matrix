@@ -1,0 +1,13 @@
+import java.util.*;
+class Student{
+    String name;
+    int roll;
+    void display(){System.out.println(name+" "+roll);}
+    public static void main(String[] args){
+        Student s=new Student();
+        Scanner sc=new Scanner(System.in);
+        s.name=sc.nextLine();
+        s.roll=sc.nextInt();
+        s.display();
+    }
+}
