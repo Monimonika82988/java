@@ -1,0 +1,16 @@
+import java.util.*;
+class Shape{
+    void area(){System.out.println("Area unknown");}
+}
+class Circle extends Shape{
+    double r;
+    Circle(double r){this.r=r;}
+    void area(){System.out.println(3.14*r*r);}
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Circle c=new Circle(sc.nextDouble());
+        c.area();
+    }
+}
