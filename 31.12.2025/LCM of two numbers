@@ -1,0 +1,17 @@
+import java.util.*;
+class LCM{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt(),b=sc.nextInt();
+        int lcm=(a*b)/gcd(a,b);
+        System.out.println(lcm);
+    }
+    static int gcd(int x,int y){
+        while(y!=0){
+            int t=y;
+            y=x%y;
+            x=t;
+        }
+        return x;
+    }
+}
