@@ -1,0 +1,9 @@
+import java.util.*;
+class Main{
+public static void main(String[] a){
+Scanner s=new Scanner(System.in);
+PriorityQueue<Integer> p=new PriorityQueue<>(Collections.reverseOrder());
+int n=s.nextInt();
+for(int i=0;i<n;i++)p.add(s.nextInt());
+while(!p.isEmpty())System.out.print(p.poll()+" ");
+}}
