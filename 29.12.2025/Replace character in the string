@@ -1,0 +1,10 @@
+import java.util.*;
+class ReplaceChar{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        char a=sc.next().charAt(0);
+        char b=sc.next().charAt(0);
+        System.out.println(s.replace(a,b));
+    }
+}
