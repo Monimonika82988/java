@@ -1,0 +1,17 @@
+import java.util.*;
+class Student{
+    private String name;
+    private int roll;
+    void setName(String n){name=n;}
+    void setRoll(int r){roll=r;}
+    String getName(){return name;}
+    int getRoll(){return roll;}
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Student s=new Student();
+        s.setName(sc.nextLine()); s.setRoll(sc.nextInt());
+        System.out.println(s.getName()+" "+s.getRoll());
+    }
+}
