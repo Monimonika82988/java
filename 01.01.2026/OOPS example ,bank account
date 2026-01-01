@@ -1,0 +1,16 @@
+import java.util.*;
+class BankAccount{
+    String name; double balance;
+    void deposit(double amt){balance+=amt;}
+    void withdraw(double amt){balance-=amt;}
+    void display(){System.out.println(name+" "+balance);}
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        BankAccount b=new BankAccount();
+        b.name=sc.nextLine();
+        b.balance=sc.nextDouble();
+        b.deposit(sc.nextDouble());
+        b.withdraw(sc.nextDouble());
+        b.display();
+    }
+}
