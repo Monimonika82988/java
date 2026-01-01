@@ -1,0 +1,3 @@
+import java.util.*;
+class QNode{int data; QNode next; QNode(int d){data=d; next=null;}}
+class QueueLL{QNode front,rear; void enqueue(int d){QNode n=new QNode(d); if(rear==null){front=rear=n;} else{rear.next=n; rear=n;}} Stack<Integer> stack=new Stack<>(); void reverse(){QNode t=front; while(t!=null){stack.push(t.data); t=t.next;} t=front; while(t!=null){t.data=stack.pop(); t=t.next;}} void display(){QNode t=front; while(t!=null){System.out.print(t.data+" "); t=t.next;}} public static void main(String[] args){Scanner sc=new Scanner(System.in); QueueLL q=new QueueLL(); int n=sc.nextInt(); for(int i=0;i<n;i++) q.enqueue(sc.nextInt()); q.reverse(); q.display();}}
