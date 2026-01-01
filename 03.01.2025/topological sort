@@ -1,0 +1,25 @@
+import java.util.*;
+class Graph{
+int v;
+ArrayList<Integer> adj[];
+Graph(int v){
+this.v=v;
+adj=new ArrayList[v];
+for(int i=0;i<v;i++)adj[i]=new ArrayList<>();
+}
+void add(int u,int w){adj[u].add(w);}
+void dfs(int v,boolean[] vis,Stack<Integer> st){
+vis[v]=true;
+for(int i:adj[v])if(!vis[i])dfs(i,vis,st);
+st.push(v);
+}
+public static void main(String[] a){
+Scanner s=new Scanner(System.in);
+int n=s.nextInt(),e=s.nextInt();
+Graph g=new Graph(n);
+for(int i=0;i<e;i++)g.add(s.nextInt(),s.nextInt());
+Stack<Integer> st=new Stack<>();
+boolean vis[]=new boolean[n];
+for(int i=0;i<n;i++)if(!vis[i])g.dfs(i,vis,st);
+while(!st.isEmpty())System.out.print(st.pop()+" ");
+}}
