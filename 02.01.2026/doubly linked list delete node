@@ -1,0 +1,3 @@
+import java.util.*;
+class DNode{int data; DNode next, prev; DNode(int d){data=d; next=prev=null;}}
+class DoublyLinkedList{DNode head; void insertEnd(int d){DNode n=new DNode(d); if(head==null) head=n; else{DNode t=head; while(t.next!=null) t=t.next; t.next=n; n.prev=t;}} void delete(int d){DNode t=head; while(t!=null && t.data!=d) t=t.next; if(t==null) return; if(t.prev!=null) t.prev.next=t.next; else head=t.next; if(t.next!=null) t.next.prev=t.prev;} void display(){DNode t=head; while(t!=null){System.out.print(t.data+" "); t=t.next;}} public static void main(String[] args){Scanner sc=new Scanner(System.in); DoublyLinkedList l=new DoublyLinkedList(); int n=sc.nextInt(); for(int i=0;i<n;i++) l.insertEnd(sc.nextInt()); l.delete(sc.nextInt()); l.display();}}
