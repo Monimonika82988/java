@@ -1,0 +1,28 @@
+import java.util.*;
+class Employee{
+    String name; int id;
+    void setData(String n,int i){name=n; id=i;}
+    void display(){System.out.print(name+" "+id+" ");}
+}
+class Developer extends Employee{
+    String lang;
+    void setLang(String l){lang=l;}
+    void displayLang(){System.out.println(lang);}
+}
+class Manager extends Employee{
+    double bonus;
+    void setBonus(double b){bonus=b;}
+    void displayBonus(){System.out.println(bonus);}
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Developer d=new Developer();
+        Manager m=new Manager();
+        d.setData(sc.nextLine(),sc.nextInt()); sc.nextLine();
+        d.setLang(sc.nextLine());
+        m.setData(sc.nextLine(),sc.nextInt()); m.setBonus(sc.nextDouble());
+        d.display(); d.displayLang();
+        m.display(); m.displayBonus();
+    }
+}
