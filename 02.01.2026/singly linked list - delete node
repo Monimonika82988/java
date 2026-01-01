@@ -1,0 +1,32 @@
+import java.util.*;
+class Node{
+    int data; Node next;
+    Node(int d){data=d; next=null;}
+}
+class SinglyLinkedList{
+    Node head;
+    void insertEnd(int d){
+        Node n=new Node(d);
+        if(head==null) head=n;
+        else{Node t=head; while(t.next!=null) t=t.next; t.next=n;}
+    }
+    void deleteNode(int d){
+        if(head==null) return;
+        if(head.data==d) head=head.next;
+        else{
+            Node t=head;
+            while(t.next!=null && t.next.data!=d) t=t.next;
+            if(t.next!=null) t.next=t.next.next;
+        }
+    }
+    void display(){Node t=head; while(t!=null){System.out.print(t.data+" "); t=t.next;}}
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        SinglyLinkedList l=new SinglyLinkedList();
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++) l.insertEnd(sc.nextInt());
+        int del=sc.nextInt();
+        l.deleteNode(del);
+        l.display();
+    }
+}
