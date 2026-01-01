@@ -1,0 +1,3 @@
+import java.util.*;
+class TNode{int data; TNode left,right; TNode(int d){data=d; left=right=null;}}
+class BST{TNode root; TNode insert(TNode node,int d){if(node==null) return new TNode(d); if(d<node.data) node.left=insert(node.left,d); else node.right=insert(node.right,d); return node;} boolean search(TNode node,int key){if(node==null) return false; if(node.data==key) return true; return key<node.data?search(node.left,key):search(node.right,key);} public static void main(String[] args){Scanner sc=new Scanner(System.in); BST b=new BST(); int n=sc.nextInt(); for(int i=0;i<n;i++) b.root=b.insert(b.root,sc.nextInt()); int key=sc.nextInt(); System.out.println(b.search(b.root,key));}}
