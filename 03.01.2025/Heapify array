@@ -1,0 +1,19 @@
+import java.util.*;
+class Main{
+static void heapify(int a[],int n,int i){
+int s=i,l=2*i+1,r=2*i+2;
+if(l<n&&a[l]<a[s])s=l;
+if(r<n&&a[r]<a[s])s=r;
+if(s!=i){
+int t=a[i];a[i]=a[s];a[s]=t;
+heapify(a,n,s);
+}
+}
+public static void main(String[] x){
+Scanner s=new Scanner(System.in);
+int n=s.nextInt();
+int a[]=new int[n];
+for(int i=0;i<n;i++)a[i]=s.nextInt();
+for(int i=n/2-1;i>=0;i--)heapify(a,n,i);
+for(int i:a)System.out.print(i+" ");
+}}
