@@ -1,0 +1,28 @@
+import java.util.*;
+class Node{int data; Node left,right; Node(int d){data=d;}}
+class BST{
+Node root;
+Node insert(Node n,int d){if(n==null)return new Node(d); if(d<n.data)n.left=insert(n.left,d); else n.right=insert(n.right,d); return n;}
+Node min(Node n){while(n.left!=null)n=n.left; return n;}
+Node delete(Node n,int d){
+if(n==null)return null;
+if(d<n.data)n.left=delete(n.left,d);
+else if(d>n.data)n.right=delete(n.right,d);
+else{
+if(n.left==null)return n.right;
+else if(n.right==null)return n.left;
+Node t=min(n.right);
+n.data=t.data;
+n.right=delete(n.right,t.data);
+}
+return n;
+}
+void inorder(Node n){if(n!=null){inorder(n.left);System.out.print(n.data+" ");inorder(n.right);}}
+public static void main(String[] a){
+Scanner s=new Scanner(System.in);
+BST b=new BST();
+int n=s.nextInt();
+for(int i=0;i<n;i++)b.root=b.insert(b.root,s.nextInt());
+b.root=b.delete(b.root,s.nextInt());
+b.inorder(b.root);
+}}
