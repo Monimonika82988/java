@@ -1,0 +1,19 @@
+import java.util.*;
+class Employee{
+    String name; double basic;
+    void setData(String n,double b){name=n; basic=b;}
+}
+class Manager extends Employee{
+    double bonus;
+    void setBonus(double b){bonus=b;}
+    void displaySalary(){System.out.println(name+" "+(basic+bonus));}
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Manager m=new Manager();
+        m.setData(sc.nextLine(),sc.nextDouble());
+        m.setBonus(sc.nextDouble());
+        m.displaySalary();
+    }
+}
