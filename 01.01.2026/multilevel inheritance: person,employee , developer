@@ -1,0 +1,26 @@
+import java.util.*;
+class Person{
+    String name;
+    void setName(String n){name=n;}
+    void display(){System.out.print(name+" ");}
+}
+class Employee extends Person{
+    int id;
+    void setId(int i){id=i;}
+    void displayId(){System.out.print(id+" ");}
+}
+class Developer extends Employee{
+    String skill;
+    void setSkill(String s){skill=s;}
+    void displaySkill(){System.out.println(skill);}
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Developer d=new Developer();
+        d.setName(sc.nextLine());
+        d.setId(sc.nextInt()); sc.nextLine();
+        d.setSkill(sc.nextLine());
+        d.display(); d.displayId(); d.displaySkill();
+    }
+}
